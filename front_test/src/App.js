@@ -6,7 +6,7 @@ import { Login } from './components/Login/Login.js';
 import { Signup } from './components/Signup/Signup.js';
 import { PrivateRoute } from './components/PrivateRoute.js';
 import Navbar from './components/Navbar';
-
+import FooterPage from './components/footer'
 import Affichage from './components/ListeCard/Affichage';
 import './App.css';
 
@@ -16,7 +16,7 @@ class App extends Component {
         <div className="App">
             <div className="App-content">
             <Navbar/>
-          
+           
                 <Switch>  
                     <Route  path ="/produit" component={NouvProd}/>
                     <Route  path="/login" component={Login}/>
@@ -24,8 +24,8 @@ class App extends Component {
                     <Route  path ="/produits" component={Affichage}/>
                     <PrivateRoute path='/dashboard' component={Dashboard} />
                 </Switch>
-                
             </div>
+            <FooterPage/>
         </div>
         );
     }

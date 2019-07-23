@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import "./Affichage.css"
-
+import { Button, FormGroup, FormControl } from "react-bootstrap";
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 
 export default class Affichage extends Component {
 
@@ -28,12 +30,12 @@ export default class Affichage extends Component {
                     return <div >
                         <div className="" key={obj._id}>
                             <div className="">
-                                <img src={'http://localhost:8080/user/produitImage/' + obj.image} alt="pdp" />
+                                <img id="imagiko" src={'http://localhost:8080/user/produitImage/' + obj.image} alt="pdp" />
                             </div>
                             <div className="row">
                                 <div className="col-md-1">
-                                <label>Titre</label>:<br/>
-                                <h4>{obj.nom}</h4>
+                                    <label>Titre</label>:<br />
+                                    <h4>{obj.nom}</h4>
                                 </div>
                                 <div className="col-md-3">
                                     <label>Prix</label> <p>{obj.prix} Ar</p>
@@ -49,22 +51,47 @@ export default class Affichage extends Component {
                                 </div>
 
                                 <div className="col-md-1">
-                                <label>Description :</label>
-                                <br/>{obj.description}
+                                    <label>Description :</label>
+                                    <br />{obj.description}
                                 </div>
                             </div>
                             <div className="container-fluid">
                                 <div className="row">
                                     <div className="col-xs-10">
-                                        <button id="detay" class="btn btn-info" onClick={() => {
-                                            return (
-                                                <div className="row">
-                                                    <div className="">
-                                                        <img width="1050px" height="500px" margin-top="10px" src={'http://localhost:8080/user/produitImage/' + obj.image} alt="pdp" />
-                                                    </div>
-                                                </div>
-                                            )
-                                        }}>s,inscrire</button>
+                                        <button id="detay" type="button" class="btn btn-outline" onClick={() => {
+                                            confirmAlert({
+                                                customUI: ({ onClose }) => {
+                                                    return (
+                                                        <div className='custom-ui'>
+
+                                                            <FormGroup controlId="nom" bsSize="large">
+                                                                <label>Nom</label>
+                                                                <FormControl autoFocus type="text" value={this.state.nom} onChange={this.handleChange} />
+                                                            </FormGroup>
+                                                            <FormGroup controlId="prenom" bsSize="large">
+                                                                <label>Prenom</label>
+                                                                <FormControl autoFocus type="text" value={this.state.prenom} onChange={this.handleChange} />
+                                                            </FormGroup>
+                                                            <FormGroup controlId="email" bsSize="large">
+                                                                <label>Email</label>
+                                                                <FormControl value={this.state.email} onChange={this.handleChange} type="email" />
+                                                            </FormGroup>
+                                                            <FormGroup controlId="telephone" bsSize="large">
+                                                                <label>Telephone</label>
+                                                                <FormControl autoFocus type="text" value={this.state.tel} onChange={this.handleChange} />
+                                                            </FormGroup>
+                                                            <h1>Are you sure</h1>
+                                                            <button type="button" class="btn btn-info" onClick={onClose}>Annuler</button>
+                                                            <Button
+                                                                onClick={this.send}
+                                                                type="submit">
+                                                                Envoyer <i class="fab fa-telegram-plane"></i>
+                                                                </Button>
+                                                        </div>
+                                                    );
+                                                }
+                                            });
+                                        }}>intéresser</button>
                                     </div>
                                 </div>
                             </div>

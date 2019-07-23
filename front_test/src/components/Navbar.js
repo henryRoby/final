@@ -12,12 +12,12 @@ toggle = nr => () => { let modalNumber = "modal" + nr; this.setState({ [modalNum
         return (
             <div>
                 <MDBNavbar color="orange" dark expand="md" style={{ marginTop: "5px" }} id="navbar">
-                    <MDBNavbarBrand> <img  src="" alt="img" /></MDBNavbarBrand>
+                    <MDBNavbarBrand> <img id="imagy"  src="../images/logo.png" alt="img"/></MDBNavbarBrand>
                     <MDBNavbarToggler onClick={this.toggleCollapse("navbarCollapse3")} />
                     <MDBCollapse id="navbarCollapse3" isOpen={this.state.collapseID} navbar>
                         <MDBNavbarNav left> 
                             <MDBNavItem > <MDBNavLink to="#!" className="nav-header"></MDBNavLink> </MDBNavItem>
-                            <MDBNavItem> <MDBNavLink to="/produits" className="nav-header">Products</MDBNavLink></MDBNavItem> 
+                            <MDBNavItem> <MDBNavLink id="prod" to="/produits" className="nav-header">Products</MDBNavLink></MDBNavItem> 
                         </MDBNavbarNav>
                         <MDBNavbarNav right>
                             <MDBNavItem>
@@ -29,7 +29,6 @@ toggle = nr => () => { let modalNumber = "modal" + nr; this.setState({ [modalNum
                         </MDBNavbarNav>
                     </MDBCollapse>
                 </MDBNavbar>
-
             </div>
         );
     }
